@@ -18,11 +18,11 @@ public class TeradataBouquetPlugin extends BaseBouquetPlugin {
 		paths[0] = this.getClass().getProtectionDomain().getCodeSource().getLocation();
 
 		// load the driver within an isolated classLoader
-		URLClassLoader cl = new URLClassLoader(paths);
+		this.driverCL = new URLClassLoader(paths);
 		ClassLoader rollback = Thread.currentThread().getContextClassLoader();
-		Thread.currentThread().setContextClassLoader(cl);
+		Thread.currentThread().setContextClassLoader(driverCL);
 
-		ServiceLoader<Driver> sl = ServiceLoader.load(java.sql.Driver.class, cl) ;
+		ServiceLoader<Driver> sl = ServiceLoader.load(java.sql.Driver.class, driverCL) ;
 		Iterator<Driver> driversIter = sl.iterator() ;
 		this.drivers = new ArrayList<Driver>();
 	
