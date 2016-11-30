@@ -13,7 +13,7 @@ public class TeradataBouquetPlugin extends BaseBouquetPlugin {
 
 	@Override
 	public void loadDriver() {
-		// get the current plugin jar 
+		// get the current plugin jar
 		URL[] paths = new URL[1];
 		paths[0] = this.getClass().getProtectionDomain().getCodeSource().getLocation();
 
@@ -22,14 +22,14 @@ public class TeradataBouquetPlugin extends BaseBouquetPlugin {
 		ClassLoader rollback = Thread.currentThread().getContextClassLoader();
 		Thread.currentThread().setContextClassLoader(driverCL);
 
-		ServiceLoader<Driver> sl = ServiceLoader.load(java.sql.Driver.class, driverCL) ;
-		Iterator<Driver> driversIter = sl.iterator() ;
+		ServiceLoader<Driver> sl = ServiceLoader.load(java.sql.Driver.class, driverCL);
+		Iterator<Driver> driversIter = sl.iterator();
 		this.drivers = new ArrayList<Driver>();
-	
-		while (driversIter.hasNext()){
-			drivers.add(driversIter.next());			
+
+		while (driversIter.hasNext()) {
+			drivers.add(driversIter.next());
 		}
 		Thread.currentThread().setContextClassLoader(rollback);
-}
+	}
 
 }
