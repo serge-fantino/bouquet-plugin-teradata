@@ -214,7 +214,7 @@ public class TeradataSQLSkin extends DefaultJDBCSkin {
 
 	@Override
 	public OperatorDefinition overrideOperatorDefinition(OperatorDefinition op, ExtendedType[] args) {
-		if (op.getExtendedID() == DateOperatorDefinition.DATE_SUB
+		if (op.getExtendedID().equals(DateOperatorDefinition.DATE_SUB)
 				&& (args[0].getDomain() == IDomain.TIMESTAMP && args[1].getDomain() == IDomain.TIMESTAMP
 						|| args[0].getDomain() == IDomain.INTERVAL)) {
 			return new DateOperatorDefinition(op.getName(), op.getExtendedID(), IDomain.INTERVAL);
