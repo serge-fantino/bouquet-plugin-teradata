@@ -49,6 +49,7 @@ import com.squid.core.domain.operators.OperatorDefinition;
 import com.squid.core.domain.operators.RankOperatorDefinition;
 import com.squid.core.domain.operators.StdevPopOperatorDefinition;
 import com.squid.core.sql.db.features.IGroupingSetSupport;
+import com.squid.core.sql.db.features.IRollupStrategySupport;
 import com.squid.core.sql.db.render.AlternativePiOperatorRenderer;
 import com.squid.core.sql.db.render.DateAddSubOperatorRenderer.OperatorType;
 import com.squid.core.sql.db.render.DateEpochOperatorRenderer;
@@ -188,6 +189,8 @@ public class TeradataSkinProvider extends DefaultSkinProvider {
 			return METADATA_SEARCH_SUPPORT;
 		} else if (featureID == DataSourceReliable.FeatureSupport.AUTOCOMMIT) {
 			return ISkinFeatureSupport.IS_SUPPORTED;
+		} else if (featureID.equals(IRollupStrategySupport.ID)) {
+			return IRollupStrategySupport.OPTIMIZE_USING_WITH_STRATEGY;
 		}
 		// else
 		return super.getFeatureSupport(skin, featureID);
