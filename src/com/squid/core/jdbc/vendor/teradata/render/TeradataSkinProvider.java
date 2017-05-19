@@ -125,7 +125,7 @@ public class TeradataSkinProvider extends DefaultSkinProvider {
 		registerOperatorRender(RandOperatorDefinition.RAND, new TeradataRandOperatorRenderer());
 		registerOperatorRender(PiOperatorDefintion.PI, new AlternativePiOperatorRenderer());
 		//
-		registerOperatorRender(StdevPopOperatorDefinition.getExtendedId(IntrinsicOperators.VARIANCE),
+		registerOperatorRender(StdevPopOperatorDefinition.getExtendedId(IntrinsicOperators.VAR_POP),
 				new TeradataVarStdevRenderer());
 		registerOperatorRender(StdevPopOperatorDefinition.getExtendedId(IntrinsicOperators.VAR_SAMP),
 				new TeradataVarStdevRenderer());
@@ -137,10 +137,10 @@ public class TeradataSkinProvider extends DefaultSkinProvider {
 				new TeradataAvgRenderer());
 		//
 		unregisterOperatorRender(TranslateOperatorDefinition.STRING_TRANSLATE);// not
-																				// yet
-																				// available
-																				// on
-																				// TD
+		// yet
+		// available
+		// on
+		// TD
 
 		// Date truncation
 		// Regexp functions
